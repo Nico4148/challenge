@@ -15,7 +15,7 @@ str_ip = '192.168.0.251'
 
 @app.route("/cha_api_get_student_by_id/<student_id>")
 def get_student_by_id(student_id):
-    conn=sqlite3.connect('/var/www/lab_app/challenge.db')
+    conn=sqlite3.connect('/cha/challenge.db')
     curs=conn.cursor()
     str_query = '''
         SELECT *
@@ -33,7 +33,7 @@ def get_student_by_id(student_id):
 
 @app.route("/cha_api_get_course/<course_id>")
 def get_course_by_id(course_id = ''):
-    conn=sqlite3.connect('/var/www/lab_app/challenge.db')
+    conn=sqlite3.connect('/cha/challenge.db')
     curs=conn.cursor()
     str_query = '''
         SELECT *
@@ -67,7 +67,7 @@ def get_create_student(student_data):
             return True
 
         def check_student_database(student_code):
-            conn=sqlite3.connect('/var/www/lab_app/challenge.db')
+            conn=sqlite3.connect('/cha/challenge.db')
             curs=conn.cursor()
             str_query = '''
                 SELECT *
@@ -82,7 +82,7 @@ def get_create_student(student_data):
             return data
         def commit_new_student(data):
             buffer_cmd = ''' INSERT INTO Student VALUES(%s,'%s %s','%s','%s',%s,'%s'); ''' %(data[0],data[1],data[2],data[3],data[4], data[5], data[6])
-            conn=sqlite3.connect('/var/www/lab_app/challenge.db')
+            conn=sqlite3.connect('/cha/challenge.db')
             curs=conn.cursor()
             curs.execute(buffer_cmd)
             conn.commit()
