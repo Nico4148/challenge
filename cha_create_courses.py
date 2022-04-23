@@ -2,7 +2,7 @@ import sqlite3
 
 def execute_cmd_list(str_list):
 	for i in str_list:
-		conn=sqlite3.connect('/var/www/lab_app/challenge.db')
+		conn=sqlite3.connect('/cha/challenge.db')
 		curs=conn.cursor()
 		curs.execute(i)
 		conn.commit()
