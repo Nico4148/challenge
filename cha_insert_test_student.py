@@ -1,7 +1,7 @@
 import sqlite3
 
 def insert_data(single_cmd):
-	conn=sqlite3.connect('/var/www/lab_app/challenge.db')
+	conn=sqlite3.connect('/chap/challenge.db')
 	curs=conn.cursor()
 	curs.execute(single_cmd)
 	conn.commit()
